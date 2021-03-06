@@ -16,22 +16,14 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .bots import Bots
-from .chats import Chats
-from .contacts import Contacts
-from .decorators import Decorators
-from .messages import Messages
-from .password import Password
-from .users import Users
+from .change_cloud_password import ChangeCloudPassword
+from .enable_cloud_password import EnableCloudPassword
+from .remove_cloud_password import RemoveCloudPassword
 
 
-class Methods(
-    Bots,
-    Contacts,
-    Password,
-    Chats,
-    Users,
-    Messages,
-    Decorators
+class Password(
+    RemoveCloudPassword,
+    ChangeCloudPassword,
+    EnableCloudPassword
 ):
     pass

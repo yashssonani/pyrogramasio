@@ -16,22 +16,30 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .bots import Bots
-from .chats import Chats
-from .contacts import Contacts
-from .decorators import Decorators
-from .messages import Messages
-from .password import Password
-from .users import Users
+from .block_user import BlockUser
+from .delete_profile_photos import DeleteProfilePhotos
+from .get_common_chats import GetCommonChats
+from .get_me import GetMe
+from .get_profile_photos import GetProfilePhotos
+from .get_profile_photos_count import GetProfilePhotosCount
+from .get_users import GetUsers
+from .iter_profile_photos import IterProfilePhotos
+from .set_profile_photo import SetProfilePhoto
+from .unblock_user import UnblockUser
+from .update_username import UpdateUsername
 
 
-class Methods(
-    Bots,
-    Contacts,
-    Password,
-    Chats,
-    Users,
-    Messages,
-    Decorators
+class Users(
+    BlockUser,
+    GetCommonChats,
+    GetProfilePhotos,
+    SetProfilePhoto,
+    DeleteProfilePhotos,
+    GetUsers,
+    GetMe,
+    UpdateUsername,
+    GetProfilePhotosCount,
+    IterProfilePhotos,
+    UnblockUser
 ):
     pass

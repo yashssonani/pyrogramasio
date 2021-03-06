@@ -16,22 +16,29 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .bots import Bots
-from .chats import Chats
-from .contacts import Contacts
-from .decorators import Decorators
-from .messages import Messages
-from .password import Password
-from .users import Users
+import pyrogram
+from pyrogram.api import functions, types
+from ...ext import BaseClient
 
 
-class Methods(
-    Bots,
-    Contacts,
-    Password,
-    Chats,
-    Users,
-    Messages,
-    Decorators
-):
-    pass
+class GetMe(BaseClient):
+    async def get_me(self) -> "pyrogram.User":
+        """Get your own user identity.
+
+        Returns:
+            :obj:`User`: Information about the own logged in user/bot.
+
+        Example:
+            .. code-block:: python
+
+                me = app.get_me()
+                print(me)
+        """
+        return pyrogram.User._parse(
+            self,
+            (await self.send(
+                functions.users.GetFullUser(
+                    id=types.InputPeerSelf()
+                )
+            )).user
+        )
