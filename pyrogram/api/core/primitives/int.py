@@ -16,10 +16,29 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = "0.16.0.asyncio"
-__license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
-__copyright__ = "Copyright (C) 2017-2019 Dan <https://github.com/delivrance>"
+from io import BytesIO
 
-from .client import *
-from .client.handlers import *
-from .client.types import *
+from ..tl_object import TLObject
+
+
+class Int(TLObject):
+    SIZE = 4
+
+    @classmethod
+    def read(cls, b: BytesIO, signed: bool = True) -> int:
+        return int.from_bytes(b.read(cls.SIZE), "little", signed=signed)
+
+    def __new__(cls, value: int, signed: bool = True) -> bytes:
+        return value.to_bytes(cls.SIZE, "little", signed=signed)
+
+
+class Long(Int):
+    SIZE = 8
+
+
+class Int128(Int):
+    SIZE = 16
+
+
+class Int256(Int):
+    SIZE = 32

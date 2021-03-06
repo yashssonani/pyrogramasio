@@ -16,10 +16,24 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = "0.16.0.asyncio"
-__license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
-__copyright__ = "Copyright (C) 2017-2019 Dan <https://github.com/delivrance>"
+from pyrogram.api.functions import Ping
+from pyrogram.api.types import MsgsAck, HttpWait
 
-from .client import *
-from .client.handlers import *
-from .client.types import *
+from pyrogram.api.core import Message, MsgContainer, TLObject
+from .msg_id import MsgId
+from .seq_no import SeqNo
+
+not_content_related = [Ping, HttpWait, MsgsAck, MsgContainer]
+
+
+class MsgFactory:
+    def __init__(self):
+        self.seq_no = SeqNo()
+
+    def __call__(self, body: TLObject) -> Message:
+        return Message(
+            body,
+            MsgId(),
+            self.seq_no(type(body) not in not_content_related),
+            len(body)
+        )

@@ -16,10 +16,32 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-__version__ = "0.16.0.asyncio"
-__license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
-__copyright__ = "Copyright (C) 2017-2019 Dan <https://github.com/delivrance>"
+from io import BytesIO
 
-from .client import *
-from .client.handlers import *
-from .client.types import *
+from ..tl_object import TLObject
+
+
+class BoolFalse(TLObject):
+    ID = 0xbc799737
+    value = False
+
+    @classmethod
+    def read(cls, *args) -> bool:
+        return cls.value
+
+    def __new__(cls) -> bytes:
+        return cls.ID.to_bytes(4, "little")
+
+
+class BoolTrue(BoolFalse):
+    ID = 0x997275b5
+    value = True
+
+
+class Bool(TLObject):
+    @classmethod
+    def read(cls, b: BytesIO) -> bool:
+        return int.from_bytes(b.read(4), "little") == BoolTrue.ID
+
+    def __new__(cls, value: bool) -> BoolTrue or BoolFalse:
+        return BoolTrue() if value else BoolFalse()
