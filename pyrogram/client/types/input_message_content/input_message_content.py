@@ -1,5 +1,5 @@
 # Pyrogram - Telegram MTProto API Client Library for Python
-# Copyright (C) 2017-2019 Dan Tès <https://github.com/delivrance>
+# Copyright (C) 2017-2018 Dan Tès <https://github.com/delivrance>
 #
 # This file is part of Pyrogram.
 #
@@ -16,10 +16,23 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from ..object import Object
 
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+"""- :obj:`InputLocationMessageContent`
+    - :obj:`InputVenueMessageContent`
+    - :obj:`InputContactMessageContent`"""
+
+
+class InputMessageContent(Object):
+    """Content of a message to be sent as a result of an inline query.
+
+    Pyrogram currently supports the following types:
+
+    - :obj:`InputTextMessageContent`
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def write(self, reply_markup):
+        raise NotImplementedError

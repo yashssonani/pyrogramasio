@@ -16,10 +16,32 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+import pyrogram
+from pyrogram.api import types
+from ..object import Object
 
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+
+class StrippedThumbnail(Object):
+    """A stripped thumbnail
+
+    Parameters:
+        data (``bytes``):
+            Thumbnail data
+    """
+
+    def __init__(
+        self,
+        *,
+        client: "pyrogram.BaseClient" = None,
+        data: bytes
+    ):
+        super().__init__(client)
+
+        self.data = data
+
+    @staticmethod
+    def _parse(client, stripped_thumbnail: types.PhotoStrippedSize) -> "StrippedThumbnail":
+        return StrippedThumbnail(
+            data=stripped_thumbnail.bytes,
+            client=client
+        )

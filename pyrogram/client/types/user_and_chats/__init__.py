@@ -16,10 +16,15 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .chat import Chat
+from .chat_member import ChatMember
+from .chat_permissions import ChatPermissions
+from .chat_photo import ChatPhoto
+from .chat_preview import ChatPreview
+from .dialog import Dialog
+from .restriction import Restriction
+from .user import User
 
 __all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
+    "Chat", "ChatMember", "ChatPermissions", "ChatPhoto", "ChatPreview", "Dialog", "User", "Restriction"
 ]

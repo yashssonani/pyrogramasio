@@ -16,10 +16,9 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .input_message_content import InputMessageContent
+from .input_text_message_content import InputTextMessageContent
 
 __all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
+    "InputMessageContent", "InputTextMessageContent"
 ]

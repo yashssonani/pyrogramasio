@@ -16,10 +16,17 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .object import Object
 
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+
+class List(list):
+    __slots__ = []
+
+    def __str__(self):
+        # noinspection PyCallByClass
+        return Object.__str__(self)
+
+    def __repr__(self):
+        return "pyrogram.client.types.pyrogram_list.PyrogramList([{}])".format(
+            ",".join(Object.__repr__(i) for i in self)
+        )

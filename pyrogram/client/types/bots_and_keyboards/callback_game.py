@@ -16,10 +16,14 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from ..object import Object
 
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+
+class CallbackGame(Object):
+    """Placeholder, currently holds no information.
+
+    Use BotFather to set up your game.
+    """
+
+    def __init__(self):
+        super().__init__()

@@ -16,10 +16,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .terms_of_service import TermsOfService
+from .sent_code import SentCode
 
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+__all__ = ["TermsOfService", "SentCode"]

@@ -16,10 +16,25 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from ..object import Object
 
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+
+class InputMedia(Object):
+    """Content of a media message to be sent.
+
+    It should be one of:
+
+    - :obj:`InputMediaAnimation`
+    - :obj:`InputMediaDocument`
+    - :obj:`InputMediaAudio`
+    - :obj:`InputMediaPhoto`
+    - :obj:`InputMediaVideo`
+    """
+
+    def __init__(self, media: str, file_ref: str, caption: str, parse_mode: str):
+        super().__init__()
+
+        self.media = media
+        self.file_ref = file_ref
+        self.caption = caption
+        self.parse_mode = parse_mode

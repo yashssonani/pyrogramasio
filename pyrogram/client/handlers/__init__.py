@@ -16,10 +16,16 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .callback_query_handler import CallbackQueryHandler
+from .deleted_messages_handler import DeletedMessagesHandler
+from .disconnect_handler import DisconnectHandler
+from .inline_query_handler import InlineQueryHandler
+from .message_handler import MessageHandler
+from .poll_handler import PollHandler
+from .raw_update_handler import RawUpdateHandler
+from .user_status_handler import UserStatusHandler
 
 __all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
+    "MessageHandler", "DeletedMessagesHandler", "CallbackQueryHandler", "RawUpdateHandler", "DisconnectHandler",
+    "UserStatusHandler", "InlineQueryHandler", "PollHandler"
 ]

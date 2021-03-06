@@ -16,10 +16,8 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
-
-__all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
-]
+from .base_client import BaseClient
+from .dispatcher import Dispatcher
+from .emoji import Emoji
+from .file_data import FileData
+from .syncer import Syncer

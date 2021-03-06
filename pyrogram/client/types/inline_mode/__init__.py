@@ -16,10 +16,13 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .inline_query import InlineQuery
+from .inline_query_result import InlineQueryResult
+from .inline_query_result_animation import InlineQueryResultAnimation
+from .inline_query_result_article import InlineQueryResultArticle
+from .inline_query_result_photo import InlineQueryResultPhoto
 
 __all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
+    "InlineQuery", "InlineQueryResult", "InlineQueryResultArticle", "InlineQueryResultPhoto",
+    "InlineQueryResultAnimation"
 ]

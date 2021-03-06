@@ -16,10 +16,15 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
-from .client import Client
-from .ext import BaseClient, Emoji
-from .filters import Filters
+from .input_media import InputMedia
+from .input_media_animation import InputMediaAnimation
+from .input_media_audio import InputMediaAudio
+from .input_media_document import InputMediaDocument
+from .input_media_photo import InputMediaPhoto
+from .input_media_video import InputMediaVideo
+from .input_phone_contact import InputPhoneContact
 
 __all__ = [
-    "Client", "BaseClient", "Emoji", "Filters",
+    "InputMedia", "InputMediaAnimation", "InputMediaAudio", "InputMediaDocument", "InputMediaPhoto", "InputMediaVideo",
+    "InputPhoneContact"
 ]
